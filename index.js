@@ -6,9 +6,12 @@ import userRoute from './src/routes/userRoute.js';
 
 const app = express()
 
+//Add this syntax to enable parsing data json for example through postman
+app.use(express.json())
+
 app.use('/api', testRouter);
-app.use('/simple', simpleRouter);
 app.use('/api', userRoute)
+app.use('/simple', simpleRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

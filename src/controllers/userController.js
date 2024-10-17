@@ -9,7 +9,13 @@ const userController = {
     try {
       const checkUser = await User.findUsername({username})
 
-      if()
+      // console.log("checkUser:", checkUser);
+      
+      if(checkUser) {
+        return res.status(403).json({
+          message: 'Username already exist'
+        })
+      }
 
       const newUser = await User.createNewUser({ email, username, password });
 
@@ -19,7 +25,7 @@ const userController = {
         });
       } else {
         return res.status(400).json({
-          mesasge: "Add new User Failed",
+          message: "Add new User Failed",
         });
       }
     } catch (error) {
